@@ -5,10 +5,12 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const process = require('process');
 const basename = path.basename(__filename);
+// Verificar ambiente de execução e as credenciais de acesso ao banco.
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
+// Criar nova instância sequelize a partir dos dados de conexão
 let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
@@ -16,6 +18,7 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
+// Percorre `models`, indexa e executa o codigo de cada modelo dentro da pasta e salva o objeto resultante na variável `db`.
 fs
   .readdirSync(__dirname)
   .filter(file => {
@@ -31,6 +34,7 @@ fs
     db[model.name] = model;
   });
 
+// indexa os modelos associados entre si e os métodos correspondentes
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
