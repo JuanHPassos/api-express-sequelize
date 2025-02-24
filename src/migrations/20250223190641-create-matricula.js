@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'pessoas', key: 'id' }
       },
-      cursos: {
+      curso_id: {
         allowNull: false,
         type: Sequelize.STRING,
         references: { model: 'cursos', key: 'id' }

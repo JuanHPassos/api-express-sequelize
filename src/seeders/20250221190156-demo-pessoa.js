@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */

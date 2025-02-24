@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 [
   {
     estudante_id: 1,
