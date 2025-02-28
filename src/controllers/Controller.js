@@ -19,7 +19,7 @@ class Controller {
       const umRegistro = await this.entidadeService.pegaUmRegistroPorId(Number(id));
       return res.status(200).json(umRegistro);
     } catch (erro) {
-      // Erro
+      res.status(500).json({error: erro.message});
     }
   }
 
@@ -54,7 +54,7 @@ class Controller {
       await this.entidadeService.excluiRegistro(Number(id));
       return res.status(200).json({mensagem: `ìd ${id} deletado`});
     } catch (erro) {
-      return res.status(500).json(erro.message);
+      return res.status(500).json({erro: erro.message});
     }
   }
 

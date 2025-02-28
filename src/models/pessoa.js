@@ -12,7 +12,10 @@ module.exports = (sequelize, DataTypes) => {
       });
       // 1 para N (pessoa tem varias matriculas)
       Pessoa.hasMany(models.Matricula, {
-        foreignKey: 'estudante_id'
+        foreignKey: 'estudante_id',
+        scope: { status: 'matriculado' }, // Filtra apenas matrículas com status "matriculado"
+        // Cria o método getAulasMatriculadas()
+        as: 'aulasMatriculadas' // "as" usada para passar apelidos 
       });  
     }
   }

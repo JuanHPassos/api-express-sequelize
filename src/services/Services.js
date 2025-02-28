@@ -12,7 +12,7 @@ class Services {
   }
 
   async pegaUmRegistroPorId(id) {
-    return dataSource[this.model].findByPK(id);
+    return dataSource[this.model].findByPk(id);
   }
 
   async criaRegistro(dadosDoRegistro) {
@@ -30,7 +30,7 @@ class Services {
   }
 
   async excluiRegistro(id) {
-    return dataSource[this.model].destroy({where: { id}});
+    return dataSource[this.model].destroy({where: { id: id}});
   }
 }
 
