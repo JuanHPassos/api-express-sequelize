@@ -1,6 +1,6 @@
 // Camada intermediaria (pega modelo, aplica regras e faz interface com controller)
 // Pega arquivo index por padrão
-const dataSource = require('../models');
+const dataSource = require('../database/models');
 
 class Services {
   constructor(nomeDoModel) {

@@ -2,10 +2,10 @@
 const path = require('path');
 
 module.exports = {
-  'config': path.resolve('src/config', 'config.json'),
-  'models-path': path.resolve('src/models'),
-  'seeders-path': path.resolve('src/seeders'),
-  'migrations-path': path.resolve('src/migrations')
+  'config': path.resolve('./src/database/config', 'config.json'),
+  'models-path': path.resolve('./src/database/models'),
+  'seeders-path': path.resolve('./src/database/seeders'),
+  'migrations-path': path.resolve('./src/database/migrations')
 };
 
 /*npx sequelize-cli model:generate --name Pessoa --attributes nome:string,email:string,cpf:string,ativo:boolean,role:string*/
