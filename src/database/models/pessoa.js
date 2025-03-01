@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // 1 para N (pessoa tem varias matriculas)
       Pessoa.hasMany(models.Matricula, {
         foreignKey: 'estudante_id',
-        scope: { status: 'matriculado' }, // Filtra apenas matrículas com status "matriculado"
+        // scope: { status: 'matriculado' }, // Filtra apenas matrículas com status "matriculado"
         // Cria o método getAulasMatriculadas()
         as: 'aulasMatriculadas' // "as" usada para passar apelidos 
       });  
@@ -29,7 +29,13 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Pessoa',
     tableName: 'pessoas',
-    paranoid: true
+    paranoid: true,
+    // Escopo de modelo.
+    defaultScope: {
+      where: {
+        ativo: true
+      }
+    }
   });
   return Pessoa;
 };
