@@ -19,6 +19,12 @@ module.exports = (sequelize, DataTypes) => {
         // Cria o método getAulasMatriculadas()
         as: 'aulasMatriculadas' // "as" usada para passar apelidos 
       });  
+      // 1 para N (pessoa tem varias matriculas)
+      Pessoa.hasMany(models.Matricula, {
+        foreignKey: 'estudante_id',
+        // Cria o método getAulasMatriculadas()
+        as: 'todasAsMatriculas' // "as" usada para passar apelidos 
+      });  
     }
   }
   Pessoa.init({
