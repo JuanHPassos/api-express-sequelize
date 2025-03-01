@@ -18,6 +18,10 @@ class Services {
   async pegaUmRegistroPorId(id) {
     return dataSource[this.model].findByPk(id);
   }
+  async pegaUmRegistro(where) {
+    // Busca por diferentes parametros, como id, nome e email.
+    return dataSource[this.model].findOne({ where: {...where} });
+  }
 
   async criaRegistro(dadosDoRegistro) {
     return dataSource[this.model].create(dadosDoRegistro);
