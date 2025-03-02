@@ -1,3 +1,4 @@
+const { sequelize } = require('../database/models/index.js');
 const converteIds = require('../utils/conversorDeStringHelper.js');
 
 class Controller {
@@ -37,11 +38,14 @@ class Controller {
   }
 
   async criaNovo(req, res) {
+    const transacao = await sequelize.transaction();
     const dadosParaCriacao = req.body;
     try {
-      const novoRegistroCriado = await this.entidadeService.criaRegistro(dadosParaCriacao);
+      const novoRegistroCriado = await this.entidadeService.criaRegistro(dadosParaCriacao, transacao);
+      await transacao.commit();
       return res.status(200).json(novoRegistroCriado);
     } catch (erro) {
+      await transacao.rollback();
       return res.status(500).json({ erro: erro.message });
     }
   }

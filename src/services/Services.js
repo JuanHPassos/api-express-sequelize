@@ -28,8 +28,8 @@ class Services {
     return dataSource[this.model].findAndCountAll({ ...options });
   }
 
-  async criaRegistro(dadosDoRegistro) {
-    return dataSource[this.model].create(dadosDoRegistro);
+  async criaRegistro(dadosDoRegistro, transacao) {
+    return dataSource[this.model].create(dadosDoRegistro, {transaction: transacao});
   }
 
   async atualizaRegistro(dadosAtualizados, where, transacao = {}) {
